@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: 'x',
                           color: Colors.orange,
                           onPress: () {
-                            userInput += '*';
+                            userInput += 'x';
                             setState(() {});
                           },
                         ),
@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.orange,
                           onPress: () {
                             setState(() {
-                              equalPres();
+                              equalPress();
                             });
                           },
                         ),
@@ -241,13 +241,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void equalPres() {
-    // String finalUserInput =userInput.replaceAll('x', '*');
-    ExpressionParser p = GrammarParser();
-    Expression expression = p.parse(userInput);
+  void equalPress() {
+    String finalUserInput = userInput.replaceAll('x', '*');
+    ExpressionParser parser = GrammarParser();
+    Expression expression = parser.parse(finalUserInput);
     ContextModel contextModel = ContextModel();
 
-    double eval = expression.evaluate(EvaluationType.REAL, contextModel);
-    answer = eval.toString();
+    double evaluate = expression.evaluate(EvaluationType.REAL, contextModel);
+    answer = evaluate.toString();
   }
 }
